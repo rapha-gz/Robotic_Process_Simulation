@@ -69,5 +69,18 @@ Defines the grid size, obstacles, and treasures.
 3 (0,0) (1,2) (3,4)
 2 (1,1) (2,3)
 ```
+
+### 2. Robot Manifest (`robots.txt`)
+Defines the initial spawn coordinates for the robot fleet. Each line represents one robot instance.
+
+**Example:**
+
+```text
+(2,3)
+(1,4)
+(1,5)
+```
+This spawns 3 robots. Robot 1 starts at (2,3), Robot 2 at (1,4), etc.
+
 ---
 *Developed by Raphael García Zapata - Robotics Engineering Student at UC3M.*
