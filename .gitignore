@@ -2,9 +2,9 @@
 __pycache__/
 *.pyc
 
-# Mac system files (just in case)
+# Mac system files 
 .DS_Store
 
-# Virtual Environments (if you use them)
+# Virtual Environments 
 env/
 venv/
