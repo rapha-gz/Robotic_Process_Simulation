@@ -52,7 +52,6 @@ async def lifespan(app: FastAPI):
     drain_task.cancel()
 
 # --- 3. API INITIALIZATION ---
-# THIS IS THE LINE YOUR CODE WAS MISSING!
 app = FastAPI(title="Dynamic Fleet API", lifespan=lifespan)
 
 class MoveCommand(BaseModel):
