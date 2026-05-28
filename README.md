@@ -1,17 +1,17 @@
-# 🤖 Multi-Process Robot Simulation & Fleet API
+# Multi-Process Robot Simulation & Fleet API
 
-A two-phase concurrent systems project that takes the **same robot fleet domain** and implements it twice — first against the bare metal of the Operating System using Unix IPC, then modernized into a cross-platform Cloud API with a live dashboard. The point isn't the simulation; it's the architectural translation between two paradigms.
+A two-phase concurrent systems project that takes the **same robot fleet domain** and implements it twice, first against the bare metal of the Operating System using Unix IPC, then modernized into a cross-platform Cloud API with a live dashboard. The point isn't the simulation; it's the architectural translation between two paradigms.
 
 **Technical surface:** `os.fork` · `os.execv` · anonymous pipes · `SIGINT` / `SIGQUIT` / `SIGTSTP` / `SIGALRM` · `FastAPI` · `asyncio` · `uvicorn` · procedural map generation · interactive HTML/JS dashboard.
 
 This project is divided into two major architectural phases, demonstrating both low-level Operating System mechanics and high-level Cloud/Web deployment:
 
-1. **Phase 1: Local System Simulation** — A Master–Slave architecture using low-level **Unix Pipes** and **Signals**.
-2. **Phase 2: Cloud API Expansion** — A modernized, highly-concurrent web interface using **FastAPI** and an interactive HTML/JS Dashboard.
+1. **Phase 1: Local System Simulation**: A Master–Slave architecture using low-level **Unix Pipes** and **Signals**.
+2. **Phase 2: Cloud API Expansion**: A modernized, highly-concurrent web interface using **FastAPI** and an interactive HTML/JS Dashboard.
 
 ---
 
-## 🖥️ PHASE 1: Local OS-Level Simulation
+## PHASE 1: Local OS-Level Simulation
 
 The foundation of the project. A central controller (`master.py`) manages multiple independent robot processes (`robots.py`) using strictly local Inter-Process Communication (IPC).
 
@@ -24,9 +24,9 @@ The foundation of the project. A central controller (`master.py`) manages multip
 
 ### Architecture
 
-* **`master.py`** — *The Orchestrator.* Reads configuration files, spawns child processes, maintains the global map state, and processes user commands.
-* **`robots.py`** — *The Agent.* Represents an individual robot. Handles local navigation logic, battery decay, and sensor queries.
-* **`sensor.py`** — *The Interface.* A helper class that parses the environment files (obstacles, treasures).
+* **`master.py`**: *The Orchestrator.* Reads configuration files, spawns child processes, maintains the global map state, and processes user commands.
+* **`robots.py`**: *The Agent.* Represents an individual robot. Handles local navigation logic, battery decay, and sensor queries.
+* **`sensor.py`**: *The Interface.* A helper class that parses the environment files (obstacles, treasures).
 
 ### Requirements
 
@@ -64,8 +64,8 @@ Once the simulation is running, the Master process listens for standard input. Y
 
 The Master process also handles specific system signals for global actions:
 
-* **`Ctrl + Z`** (`SIGTSTP`) — Prints the status (ID, position, battery) of all robots immediately.
-* **`Ctrl + \`** (`SIGQUIT`) — Replenishes the battery of **all** robots to 100%.
+* **`Ctrl + Z`** (`SIGTSTP`): Prints the status (ID, position, battery) of all robots immediately.
+* **`Ctrl + \`** (`SIGQUIT`): Replenishes the battery of **all** robots to 100%.
 
 ### Configuration Files
 
@@ -103,7 +103,7 @@ Defines the initial spawn coordinates for the robot fleet. Each line represents 
 
 ---
 
-## 🌐 PHASE 2: Cloud API & Interactive Dashboard
+## PHASE 2: Cloud API & Interactive Dashboard
 
 A modernized Web API (`main.py`) that replaces local Unix Pipes with HTTP requests, making the simulation cross-platform and accessible over a network with an interactive frontend. Same domain logic, completely different architecture.
 
@@ -148,15 +148,13 @@ Unlike Phase 1, the API is entirely cross-platform and **will run on Windows nat
 
 ---
 
-## 📌 Project Status
+## Project Status
 
-**Status:** ✅ Complete (v2.0).
+**Status:** Complete (v2.0).
 
-This repository represents the finished two-phase exploration of the same domain across two paradigms — Unix IPC and a modern async web stack. A planned **v3** (industrial data layer: MQTT, time-series storage, observability, cloud deployment) was scoped and then forked into a separate project, where the same infrastructure patterns are applied to a domain better aligned with my target roles in industrial digital operations:
+This repository represents the finished two-phase exploration of the same domain across two paradigms — Unix IPC and a modern async web stack. A planned **v3** (industrial data layer: MQTT, time-series storage, observability, cloud deployment) was planned and then forked into a separate project, where the same infrastructure patterns are applied to a domain better aligned with my target roles in industrial digital operations:
 
-➡️ **[ev-csms-platform](#)** — an OCPP 2.0.1 Charging Station Management System with the full digital-operations stack around it. *(Replace this link with the actual repo URL once published.)*
-
-The original v3 design notes (architecture sketches, MQTT topic schema, Mosquitto configuration) are preserved in the `archive/phase1-data-layer-attempt` branch for reference.
+ **[ev-csms-platform](#)** , an OCPP 2.0.1 Charging Station Management System with the full digital-operations stack around it.(https://github.com/rapha-gz/ev-csms-platform)
 
 ---
 
